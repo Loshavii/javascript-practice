@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+
+
+
+
+
+
+    <script>
+        // part 01
+        // Q01
+
+        const firstName = "loshavii";
+        const lastName = "Arulramesh";
+        fullName(firstName, lastName);
+        function fullName(parameter1, parameter2) {
+            return parameter1 + ' ' + parameter2;
+
+        }
+        console.log(fullName(firstName, lastName));
+
+
+        // Q02
+
+        let para = "The quote 'There is no exercise better for the heart than reaching down and lifting people up.' by John Holmes teaches us to help one another."
+        console.log(para);
+
+
+        // Q03
+
+        str = "1 1 1 1\n2 1 2 4 8\n3 1 3 9 2 7\n4 1 4 1 6 6 4\n5 1 5 2 5 1 2 5";
+        console.log(str);
+
+
+        // Q04
+
+        let sentence = "There is a commonly stated “rule” of grammar that beginning a sentence with and, or any other conjunction, is a mistake. But this is just not true. This supposed “rule” has no basis in actual writing, and even formal writing features plenty of sentences that start with and and other conjunctions. And we think that is really cool."
+        let countAnd = (sentence.match(/and/g) || []).length;
+        let countOr = (sentence.match(/or/g) || []).length;
+        console.log("The number of 'and' is " + countAnd);
+        console.log("The number of 'or' is " + countOr);
+
+
+        // Q05
+
+        let now = new Date();
+        console.log(now);
+
+        let currentYear = now.getFullYear();
+        console.log("Current Year: " + currentYear);
+
+        let currentMonth = now.getMonth() + 1;
+        console.log("Current Month: " + currentMonth);
+
+        let currentDate = now.getDate();
+        console.log("current Date: " + currentDate);
+
+        let currentDay = now.getDay() + 1;
+        console.log("current Day: " + currentDay);
+
+
+        // Q08
+        function getNumberInput(message) {
+            const userInput = prompt(message);
+            return parseFloat(userInput);
+        }
+
+        const hoursWorked = getNumberInput("Enter hours: ");
+
+        const hourlyRate = getNumberInput("Enter rate per hour: ");
+
+        const totalPay = hoursWorked * hourlyRate;
+
+        console.log(`Your weekly earning is ${totalPay}`);
+
+
+
+
+
+
+        // Q09
+
+        function checkDrivingEligibility() {
+            // Get the current year
+            const currentYear = new Date().getFullYear();
+
+            // Prompt the user to enter their birth year
+            const birthYear = parseInt(prompt("Enter birth year:"));
+
+            // Calculate the user's age
+            const age = currentYear - birthYear;
+
+            // Check if the user is 18 or above
+            if (age >= 18) {
+                alert(`You are ${age}. You are old enough to drive.`);
+            } else {
+                const yearsToWait = 18 - age;
+                alert(`You are ${age}. You will be allowed to drive after ${yearsToWait} years.`);
+            }
+        }
+
+        checkDrivingEligibility();
+
+
+
+        // Q10
+        const numbers = [1, 2, 3, 4, 5, 6, 7];
+
+        const evenNumbers = numbers.filter(function (number) {
+            return number % 2 === 0;
+        });
+
+        console.log(evenNumbers);
+
+
+
+        // Q11
+
+        const numBers = [1, 2, 3, 4, 5];
+
+        const squares = numBers.map(num => num * num);
+
+        console.log(squares);
+
+
+
+
+
+        // Q12
+        const books = [
+            {
+                title: "To Kill a Mockingbird",
+                author: "Harper Lee",
+                genre: "Fiction",
+                pages: 336,
+                publication_year: 1925,
+            },
+            {
+                title: "1984",
+                author: "George Orwell",
+                genre: "Dystopian",
+                pages: 328,
+                publication_year: 1949,
+            },
+            {
+                title: "Pride and Prejudice",
+                author: "Jane Austen",
+                genre: "Romance",
+                pages: 432,
+                publication_year: 1813,
+            },
+            {
+                title: "The Great Gatsby",
+                author: "F. Scott Fitzgerald",
+                genre: "Classic",
+                pages: 180,
+                publication_year: 1925,
+            },
+        ];
+
+        // Filter
+
+        const filterBooksByPage = books.filter((books) => {
+            return books.pages > 100;
+        }, {});
+        console.log(filterBooksByPage);
+
+        const filterBooksByPages = books.filter((books) => {
+            return books.pages < 200;
+        }, {});
+        console.log(filterBooksByPages);
+
+        const filterBooksByGenre = books.filter((books) => {
+            return books.genre == "Fiction";
+        }, {});
+        console.log(filterBooksByGenre);
+
+        const filterBooksByGenres = books.filter((books) => {
+            return books.genre == "Romance";
+        }, {});
+        console.log(filterBooksByGenres);
+
+
+        // map
+
+        const title = books.map(books => {
+            return books.title;
+        });
+        console.log(title);
+
+        const author = books.map(books => {
+            return books.author;
+        });
+        console.log(author);
+
+
+
+
+
+
+        // reduce
+
+        const totalNumber = books.reduce((sum, books) => {
+            return sum + parseInt(books.pages);
+        }, 0);
+        console.log("total number of pages is: " + totalNumber);
+
+
+        const totalNumberByPublicationYear = books.reduce((result, book) => {
+            if (typeof result[book.publication_year] === "undefined") {
+                result[book.publication_year] = 1;
+            } else {
+                result[book.publication_year] += 1;
+            }
+            return result;
+        }, {});
+
+        console.log(totalNumberByPublicationYear);
+
+
+        const totalNumberByTitle = books.reduce((result, book) => {
+            if (typeof result[book.publication_title] === "undefined") {
+                result[book.publication_title] = 1;
+            } else {
+                result[book.publication_title] += 1;
+            }
+            return result;
+        }, {});
+
+        console.log(totalNumberByTitle);
+
+
+        const totalNumberBygenre = books.reduce((result, book) => {
+            if (typeof result[book.genre] === "undefined") {
+                result[book.genre] = 1;
+            } else {
+                result[book.genre] += 1;
+            }
+            return result;
+        }, {});
+
+        console.log(totalNumberBygenre);
+
+
+
+        // Q15
+
+        
+        function sumPositiveNumbers(arr) {
+            return arr.reduce((acc, num) => num > 0 ? acc + num : acc
+                , 0);
+        }
+        console.log(sumPositiveNumbers([1, -2, 3, 4, -5]));
+
+
+        // Q16
+
+        function calculateBmi(weight, height) {
+            if (weight <= 0 || height <= 0) {
+                return "Invalid input";
+            }
+            let bmi = weight / (height * height);
+            console.log("Calculated BMI:", bmi);
+
+            if (bmi < 18.5) {
+                return "Underweight";
+            } else if (bmi >= 18.5 && bmi <= 24.9) {
+                return "Normal weight";
+            } else if (bmi >= 25 && bmi <= 29.9) {
+                return "Overweight";
+            } else {
+                return "Obese";
+            }
+        }
+        console.log(calculateBmi(70, 1.7));
+
+
+
+        // part 02
+
+        // 01
+        function determineSign(number) {
+            return number > 0 ? "Positive" : (number < 0 ? "Negative" : "Zero");
+        }
+
+
+        const number1 = 5;
+        const number2 = -3;
+        const number3 = 0;
+
+        console.log(`The number ${number1} is ${determineSign(number1)}.`); // The number 5 is Positive.
+        console.log(`The number ${number2} is ${determineSign(number2)}.`); // The number -3 is Negative.
+        console.log(`The number ${number3} is ${determineSign(number3)}.`); // The number 0 is Zero.
+
+        // 02
+
+        function checkEvenOrOdd(number) {
+            return number % 2 === 0 ? "Even" : "Odd";
+        }
+
+        const num1 = 4;
+        const num2 = 7;
+
+        console.log(`The number ${num1} is ${checkEvenOrOdd(num1)}.`); // The number 4 is Even.
+        console.log(`The number ${num2} is ${checkEvenOrOdd(num2)}.`); // The number 7 is Odd.
+
+
+        // 03
+
+        function determineGreaterNumber(number1, number2) {
+            return number1 > number2 ? number1 : number2;
+        }
+
+        const num5 = 10;
+        const num6 = 20;
+
+        console.log(`The greater number between ${num5} and ${num6} is ${determineGreaterNumber(num5, num6)}.`); // The greater number between 10 and 20 is 20.
+
+        const num3 = 15;
+        const num4 = 15;
+
+        console.log(`The greater number between ${num3} and ${num4} is ${determineGreaterNumber(num3, num4)}.`); // The greater number between 15 and 15 is 15.
+
+        // 04
+
+        function getTicketPrice(age) {
+            let price;
+
+            if (age < 12) {
+                price = 5;
+            } else if (age < 18) {
+                price = 10;
+            } else if (age < 60) {
+                price = 20;
+            } else {
+                price = 15;
+            }
+
+            return price;
+        }
+
+        let ages = [5, 15, 25, 65];
+        ages.forEach(age => {
+            console.log(`The ticket price for age ${age} is ${getTicketPrice(age)}`);
+        });
+
+
+        // 05
+
+        function isLeapYear(year) {
+            if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        let years = [1900, 2000, 2004, 2021, 2024];
+        years.forEach(year => {
+            if (isLeapYear(year)) {
+                console.log(`${year} is a leap year.`);
+            } else {
+                console.log(`${year} is not a leap year.`);
+            }
+        });
+
+        // 06
+
+        function calculateDiscount(amount) {
+            let discount = 0;
+
+            if (amount >= 100) {
+                discount = 20;
+            } else if (amount >= 50) {
+                discount = 10;
+            }
+
+            return discount;
+        }
+
+        function finalPrice(amount) {
+            const discount = calculateDiscount(amount);
+            const discountedPrice = amount - discount;
+            return discountedPrice;
+        }
+
+
+        const purchaseAmount = 75;
+        const discount = calculateDiscount(purchaseAmount);
+        const discountedPrice = finalPrice(purchaseAmount);
+
+        console.log(`Purchase Amount: $${purchaseAmount}`);
+        console.log(`Discount: $${discount}`);
+        console.log(`Discounted Price: $${discountedPrice}`);
+
+        // 07
+
+
+        let noww = new Date();
+        let hours = noww.getHours();
+
+        let greeting;
+
+        if (hours < 12) {
+            greeting = "Good morning";
+        } else if (hours < 18) {
+            greeting = "Good afternoon";
+        } else {
+            greeting = "Good evening";
+        }
+
+        console.log(greeting);
+
+
+        // part 03
+
+
+        // 01
+        for (let i = 0; i <= 5; i++) {
+            console.log(i);
+        }
+
+        // 02
+        let sum = 0;
+
+        for (let i = 0; i < 100; i++) {
+            sum += i;
+        }
+
+        console.log("The sum of all numbers from 0 to 99 is:", sum);
+
+        // 03
+        let sumEven = 0;
+
+        for (let i = 10; i <= 100; i += 2) {
+            sumEven += i;
+        }
+
+        console.log("The sum of even numbers from 10 to 100 is:", sumEven);
+
+        // 04
+        let arr = [43, "what", 9, true, "cannot", false, "be", 3, true];
+
+        let output = '';
+        for (let i = arr.length - 1; i >= 0; i--) {
+            output += arr[i] + ' ';
+        }
+        console.log(output.trim());
+
+
+        // 05
+
+        let arr_3 = [4, 6, 7];
+        let arr_4 = [8, 1, 9];
+
+        let sumArray = [];
+
+        for (let i = 0; i < arr_3.length; i++) {
+            sumArray.push(arr_3[i] + arr_4[i]);
+        }
+
+        console.log(sumArray);
+
+        // 06
+
+        let str1 = "javascript";
+
+
+        for (let i = 0; i < str1.length; i++) {
+            if ((i + 1) % 2 == 0) {
+                console.log('Z');
+            } else {
+                console.log(str1[i]);
+            }
+        }
+
+
+        // 07
+
+        let arr_5 = [3, 5, 22, 5, 7, 2, 45, 75, 89, 21, 2];
+        let arr_6 = [9, 2, 42, 55, 71, 22, 4, 5, 90, 25, 26];
+
+        function sumArray(arr) {
+            let sum = 0;
+            for (let i = 0; i < arr.length; i++) {
+                sum += arr[i];
+            }
+            return sum;
+        }
+
+        let sum5 = sumArray(arr_5);
+        let sum6= sumArray(arr_6);
+
+        let totalSum = sum5 + sum6;
+
+        console.log(`${sum5} + ${sum6} = ${totalSum}`);
+
+
+
+
+    </script>
+</body>
+
+</html>
+
+
+
+
+</script>
+</body>
+
+</html>
